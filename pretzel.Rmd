@@ -1,0 +1,42 @@
+---
+title: 'Pretzel preprint title'
+author:
+- Author First (University of Foo)
+- Another Person (University of Bar)
+output:
+  bookdown::pdf_document2:
+    number_sections: yes
+    toc: false
+abstract: 
+  This is the abstract.
+bibliography: references.bib
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.path = "figures/"
+)
+```
+
+
+
+# Introduction
+
+Cite papers like this: `[@jimnez2017]` [@jimnez2017] matching entries in `references.bib`
+
+
+# Results
+
+You can also include plot, as illustrated in the text below which generates Figure 1. Note that when using `bookdown::pdf_document2` as the output (as illustrated in the example YAML code above) the syntax `\@ref(fig:basic-plot)` can be used to refer to plots with *automatic numbering*, e.g. Figure \@ref(fig:basic-plot).
+
+```{r basic-plot, fig.cap="A basic plot."}
+plot(matrix(rpois(n = 2e3, lambda = 9), ncol = 2))
+```
+
+# Acknowledgements
+
+[https://github.com/Robinlovelace/rmarkdown-paper-repo](https://github.com/Robinlovelace/rmarkdown-paper-repo)
+
+# References
+
