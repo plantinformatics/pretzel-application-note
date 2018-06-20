@@ -1,12 +1,13 @@
 #!/usr/bin/env Rscript
 
-args <- commandArgs(TRUE)
+
+location <- "~/local/R_libs/"; dir.create(location, recursive = TRUE)
 if(!require(rmarkdown)){
-    install.packages("rmarkdown")
+    install.packages("rmarkdown", lib=location, repos='https://cran.csiro.au')
     library(rmarkdown)
 }
 if(!require(rticles)) {
-  install.packages("rticles", type = "source")
+  install.packages("rticles", type = "source", lib=location, repos='https://cran.csiro.au')
   library(rticles)
 }
 #if(!require(kableExtra)){ #for tables
@@ -19,4 +20,4 @@ if(!require(rticles)) {
 #    library(revealjs, lib.loc=location)
 #}
 rmarkdown::render("pretzel.Rmd")
-#rmarkdown::render(args[1], output_format = args[2])
+
