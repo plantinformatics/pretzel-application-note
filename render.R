@@ -1,14 +1,18 @@
 #!/usr/bin/env Rscript
 
 
-location <- "~/local/R_libs/"; dir.create(location, recursive = TRUE)
+location <- "~/local/R_libs/"; dir.create(location, recursive = TRUE  )
 if(!require(rmarkdown)){
     install.packages("rmarkdown", lib=location, repos='https://cran.csiro.au')
-    library(rmarkdown)
+    library(rmarkdown, lib.loc=location)
 }
 if(!require(rticles)) {
   install.packages("rticles", type = "source", lib=location, repos='https://cran.csiro.au')
-  library(rticles)
+  library(rticles, lib.loc=location)
+}
+if(!require(bookdown)) {
+    install.packages("bookdown", lib=location, repos='https://cran.csiro.au')
+    library(bookdown, lib.loc=location)
 }
 #if(!require(kableExtra)){ #for tables
 #  install.packages("kableExtra")
