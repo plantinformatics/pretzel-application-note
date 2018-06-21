@@ -34,7 +34,7 @@ You can also include plot, as illustrated in the text below which generates Figu
 plot(matrix(rpois(n = 2e3, lambda = 9), ncol = 2))
 ```
 
-# Acknowledgements
+# Acknowledgements {-}
 
 [https://github.com/Robinlovelace/rmarkdown-paper-repo](https://github.com/Robinlovelace/rmarkdown-paper-repo)
 
