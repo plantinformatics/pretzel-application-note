@@ -10,6 +10,7 @@ output:
 abstract: 
   This is the abstract.
 bibliography: references.bib
+csl: elsevier-harvard.csl
 ---
 
 ```{r, echo = FALSE}
@@ -23,7 +24,7 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-Cite papers like this: `[@jimnez2017]` [@jimnez2017] matching entries in `references.bib`
+Cite papers like this: `[@Wen2017]` [@Wang2014; @Gardner2016; @Wen2017] matching entries in `references.bib`. 
 
 
 # Results
@@ -34,7 +35,7 @@ You can also include plot, as illustrated in the text below which generates Figu
 plot(matrix(rpois(n = 2e3, lambda = 9), ncol = 2))
 ```
 
-# Acknowledgements
+# Acknowledgements {-}
 
 [https://github.com/Robinlovelace/rmarkdown-paper-repo](https://github.com/Robinlovelace/rmarkdown-paper-repo)
 
