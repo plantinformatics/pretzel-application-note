@@ -1,5 +1,5 @@
 ---
-title: 'Flexible framework for representing and manipulating linear data 🥨'
+title: 'Flexible framework for representing and manipulating linear data'
 author:
 - Author First (University of Foo)
 - Another Person (University of Bar)
@@ -7,14 +7,14 @@ output:
   bookdown::pdf_document2:
     number_sections: yes
     toc: false
-abstract: 
+abstract:
   Background Findings, the technical details of the method, how the method was performed and statistical tests used; Conclusions, brief summary and potential implications. Please minimize the use of abbreviations and do not cite references in the abstract. 250 words max
 bibliography: references.bib
 csl: elsevier-harvard.csl
 ---
 
 # Keywords
-🥨, synteny, visualisation, genomics, genetic map, genome assembly, web services
+synteny, visualisation, genomics, genetic map, genome assembly, web services
 
 # Introduction
 
@@ -27,14 +27,14 @@ Recent advances in genome assembly technologies and methods have led to the publ
 * availability of chromomosome-scale assemblies in previously "difficult" genomes, together with increasing need for biological researchers to interface with large datasets
 * focus on interactivity
 * dynamic visualisation and manipulation of data
-* extendability 
-  * 
+* extendability
+  *
   * e.g. BioJS
 * Available frameworks adapted to data such as ...
 * Framework for data integration
   * Defined general data structures
 * Decision d3.js vs canvas
-  * 
+  *
 ## prior art
 
 Several approaches already exist as at least partial solutions to these challenges. Genome browsers such as GBrowse [@stein2002generic] and JBrowse [@skinner2009jbrowse] provide means to display genomic structure at a range of resolutions, as well as tracks displaying features linked to positions in the genome. For genetic maps, CMap [@fang2003cmap] has provided the ability to display relationships between maps based on common markers. Recent developments such as CMap-JS [**citation**] have begun to provide similar capability using more modern web technology. In each of these cases, the visualisation layer provides a view of the database contents, with interactivity such as filtering data (by zooming or selecting feature types), but with no, or limited interaction with the data itself, and no ability to integrate with other data sources. Aside from web applications, Strudel is a desktop application that enables the comparitive visualisation of genetic and physical maps [@Bayer2011].
@@ -46,12 +46,12 @@ In an effort to enable a more straightforward means to access, visualise and int
 
 **drawbacks of the above**
 - static data (ie a representation of what is in the database)
-- 
+-
 
 
 # Findings
 
-## implementation 
+## implementation
 
 A goal of Pretzel was to provide a flexible, lightweight application in the web browser that could be run locally or served over a network connection. In addition, its data model was designed to be as general as possible to allow the most wide-ranging number of applications. We implemented a back-end API in Loopback together with a front-end based on Ember.js, using D3.js for visualisation. While Ember.js is a web framework is particularly suited for traditional web sites such as blogs, social networks, and shopping sites, it is sufficiently general to allow arbitrary applications to be designed. Pretzel uses the Ember Data store to deliver data to D3.js visualisations in Ember components, with updates triggered by computed properies as data arrives from the back-end.
 
@@ -68,47 +68,47 @@ There is often a need to consider two or more features as the same thing for the
 Discuss benefits of general model and wide range of applications.
 
 
-## availability 
+## availability
 
 The source code for Pretzel is available under a GPL 3.0 license [**citation to github release**].
 
-A public instance of pretzel pre-loaded with multiple genetic maps and plant genomes relevant to wheat pre-breeding research is available at [http://plantinformatics.io](https://plantinformatics.io). In addition, we have developed a docker container for deploying a local instance which may be preferable for use with non-public or confidential data. 
+A public instance of pretzel pre-loaded with multiple genetic maps and plant genomes relevant to wheat pre-breeding research is available at [http://plantinformatics.io](https://plantinformatics.io). In addition, we have developed a docker container for deploying a local instance which may be preferable for use with non-public or confidential data.
 
 ## testing ?
 
-## User interface 
+## User interface
 
-* description 
+* description
 * discussion of the intended uses (what non-genomic linear data could be displayed?)
 
 Pretzel's Map Viewer allows alignment of genetic maps, physical maps, and any other linearly-represented data. The visualisation is dynamic and interactive and allows the user to explore, modify and retrieve the visualised data. This includes actions such as inverting the order of a genetic map or a fragment of assembled  chromosome.
 
-* benefits 
-  * Interconnectivity of independent pretzel instances. 
-  * FAIR data - specifically ease of accessibility 
-      * Findable - ? 
+* benefits
+  * Interconnectivity of independent pretzel instances.
+  * FAIR data - specifically ease of accessibility
+      * Findable - ?
       * Accessible - single instance, multiple data sources?
       * Interoperable - common data representation enables integration of data types where they are anchored to a linear scale
-      * Reusable - ? 
+      * Reusable - ?
 
-Genome assemblies are imperfect, by overlaying synteny with various data tracks our approach allows researchers to make better informed decision regarding their QTL/region of interest. 
+Genome assemblies are imperfect, by overlaying synteny with various data tracks our approach allows researchers to make better informed decision regarding their QTL/region of interest.
 * performance and functionality, compare with functionally with similar
 In contrast to commonly used genome browsers, pretzel can simultaneously display various data types for two or more reference axes, while also displaying relationships between the axes. The axes can also be at any scale (browsers tend to struggle at whole chromosome representation)
 * A case study may be presented.
 
-Figure XYZ demonstrates pretzel view of the well-studied transloactions involving modern wheat chromosomes 4A, 5A and 7B. 
+Figure XYZ demonstrates pretzel view of the well-studied transloactions involving modern wheat chromosomes 4A, 5A and 7B.
   * Evolution of a genome through assemblies? For example GRCh38 vs earlier
   * Comparison between different data types eg genetic and physical map
 * The planned future development of new features, if any, should be mentioned.
 
-# Methods 
+# Methods
 
-To be able to explore multiple legacy data sets such as genetic maps we have standardised their formatting  and made them available in a public repository under [URL-HERE](https://). 
+To be able to explore multiple legacy data sets such as genetic maps we have standardised their formatting  and made them available in a public repository under [URL-HERE](https://).
 
-* application to genomic data 
+* application to genomic data
 * workflow to generate aliases?
 
-Syntenic relationship between chromosomes (blocks) can be displayed based on aliases. An alias pairs two features on distinct blocks within or between data sets. We developed a Nextflow [@DiTommaso2017nextflow] pipeline which generates all inputs required by pretzel to display putative syntenic links between chromosomes. The pipeline downloads protein sequences and genome assembly descriptions from Ensembl plants and processes these together with data sets obtained from other repositories. For each genome assembly, pretzel-compatible data set definition is generated along with features definition, reflecting positions of genes along pseudochromosomes. Aliases are generated based on pairwise protein similarity using MMseqs2 [@Steinegger2017mmseqs2]. 
+Syntenic relationship between chromosomes (blocks) can be displayed based on aliases. An alias pairs two features on distinct blocks within or between data sets. We developed a Nextflow [@DiTommaso2017nextflow] pipeline which generates all inputs required by pretzel to display putative syntenic links between chromosomes. The pipeline downloads protein sequences and genome assembly descriptions from Ensembl plants and processes these together with data sets obtained from other repositories. For each genome assembly, pretzel-compatible data set definition is generated along with features definition, reflecting positions of genes along pseudochromosomes. Aliases are generated based on pairwise protein similarity using MMseqs2 [@Steinegger2017mmseqs2].
 
 > TODO: check/demonstrate use on genomes from Ensembl (not plants)?
 
