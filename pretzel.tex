@@ -4,6 +4,7 @@
 \access{Advance Access Publication Date: Day Month Year}
 \appnotes{Application Note}
 
+
 \begin{document}
 \firstpage{1}
 
@@ -29,7 +30,7 @@ Pretzel aims to solve both of these problems by providing an interactive, online
 We demonstrate that Pretzel can be used to answer common questions asked by pre-breeders as well as for advanced curation of pseudomolecule structure.
 \\
 \textbf{Availability:} 
-Pretzel is implemented in JavaScript and is freely available under a GPL3 license online at: https://github.com/plantinformatics/pretzel.
+Pretzel is implemented in JavaScript and is freely available under a GPL3 license online at: \href{https://github.com/plantinformatics/pretzel}{https://github.com/plantinformatics/pretzel}.
 \\
 \textbf{Contact:} \href{name@bio.com}{name@bio.com}\\
 \textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}
@@ -63,7 +64,7 @@ This general concept also allows the association of syntenic genes between genom
 Data can be uploaded through the web interface in CSV or JSON format (the native data structure in JavaScript); or uploaded via command line in JSON format to the back-end directly. 
 This facilitates upload of many datasets. 
 Upon upload, data is visible by that user only, unless they explicitly make it available to other users. 
-In addition, we have created a pipeline, Pretzel Input Generator (https://github.com/plantinformatics/pretzel-input-generator), to generate Pretzel-ready data from standard genome assembly formats in an automated way, and made available a set of publicly available genomes so users can quickly set up a Pretzel server populated with real data.
+In addition, we have created a pipeline, Pretzel Input Generator (\href{https://github.com/plantinformatics/pretzel-input-generator}{https://github.com/plantinformatics/pretzel-input-generator}), to generate Pretzel-ready data from standard genome assembly formats in an automated way, and made available a set of publicly available genomes so users can quickly set up a Pretzel server populated with real data.
 One of the most common questions asked in wheat research is what genes underlie a QTL interval defined by a genetic mapping experiment. 
 With Pretzel, users with no bioinformatics training can quickly project their genetic map interval onto physical sequence and extract the genes in this region for downstream analysis. 
 An additional challenge when fine mapping an interval is potential assembly problems in the region of interest. Fig 1. shows a genetic map aligned to a physical chromosome, as well as two syntenic chromosomes (chromosomes 1B and 1D) aligned via their syntenic genes (shown in red). 
@@ -71,17 +72,17 @@ By comparing the co-linearity of genes between sub-genomes, potential assembly p
 In this way, advanced curation of pseudomolecule structure can be achieved on any number of genomes.
 The technology stack Pretzel is built on is lightweight and a user with the necessary dependencies can clone, build and run the Pretzel code within minutes with a few simple commands. 
 If run on an internet-facing machine, the server can then be connected to by other users. 
-To make the installation process even easier, we have set up Docker containers on Dockerhub (https://hub.docker.com/r/plantinformaticscollaboration/pretzel/).
+To make the installation process even easier, we have set up Docker containers on Dockerhub (\href{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}).
 
 
 
 \end{methods}
 
 \begin{figure}[!tpb]%figure1
-\fboxsep=0pt\colorbox{gray}{\begin{minipage}[t]{235pt} \vbox to 100pt{\vfill\hbox to
-235pt{\hfill\fontsize{24pt}{24pt}\selectfont FPO\hfill}\vfill}
-\end{minipage}}
-%\centerline{\includegraphics{fig01.eps}}
+%\fboxsep=0pt\colorbox{gray}{\begin{minipage}[t]{235pt} \vbox to 100pt{\vfill\hbox to
+%235pt{\hfill\fontsize{24pt}{24pt}\selectfont FPO\hfill}\vfill}
+%\end{minipage}}
+\centerline{\includegraphics[width=.55\textwidth]{pretzel.png}}
 \caption{
   Pretzel alignment showing a 90k genetic map on the far left against the IWGSC RefSeq v1.0 chromosome 1B pseudomolecule in the centre, 
   with chromosome 1D on the far right. 
