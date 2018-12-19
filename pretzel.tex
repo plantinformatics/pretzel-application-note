@@ -23,14 +23,14 @@ Country.}
 \editor{Associate Editor: XXXXXXX}
 
 \abstract{\textbf{Motivation:}
-Major advances have been made in the assembly of complex genomes such as that of wheat but remaining challenges include linking these new resources to legacy research, as well as lowering the bar to entry for members of research community who may lack specific bioinformatics skills.
+Major advances have been made in the assembly of complex genomes such as that of wheat but remaining challenges include linking these new resources to legacy research, as well as lowering the bar to entry for members of research community who may lack specific bioinformatics skills. %TODO Not clear enough what kind of dat we are talking about?
 \\
 \textbf{Results:} 
 Pretzel aims to solve both of these problems by providing an interactive, online environment for data visualisation and analysis which, when loaded with appropriately curated data, can enable researchers with no bioinformatics training to exploit the latest genomic resources. 
 We demonstrate that Pretzel can be used to answer common questions asked by pre-breeders as well as for advanced curation of pseudomolecule structure.
 \\
 \textbf{Availability:} 
-Pretzel is implemented in JavaScript and is freely available under a GPLv3 license online at: \href{https://github.com/plantinformatics/pretzel}{https://github.com/plantinformatics/pretzel}.
+Pretzel is implemented in JavaScript and is freely available under a GPLv3 license online at: {{https://github.com/plantinformatics/pretzel}}.
 \\
 \textbf{Contact:} \href{name@bio.com}{name@bio.com}\\
 \textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}
@@ -38,15 +38,17 @@ online.}
 
 \maketitle
 
+
 \section{Introduction}
 
-The release of the International Wheat Genome Sequencing Consortium (IWGSC) RefSeq v1.0 genome assembly of bread wheat cultivar Chinese Spring~\citep{IWGSC2018} provided the first detailed map of the 16Gb genome, bringing wheat genomic resources closer to the standard enjoyed in rice and maize. 
-Already, international efforts are in the process of assembling more than ten elite wheat varieties to a similar standard; within five years we can expect hundreds of high quality wheat genomes to be available. 
-The challenge that remains is to connect these resources to the wealth of research carried out in the past few decades, and make this information accessible to pre-breeders and breeders who may lack the required bioinformatics skill-set.
+The release of the RefSeq v1.0 genome assembly of bread wheat cultivar Chinese Spring~\citep{IWGSC2018} provided the first detailed map of the 16Gb genome, bringing wheat genomic resources closer to the standard enjoyed in rice and maize. 
+Already, international efforts are in the process of assembling more than ten elite wheat varieties to a similar standard. 
+Within five years we can expect hundreds of high quality wheat genomes to be available. 
+The challenge that remains is to connect these new resources to the wealth of research carried out in the past few decades, and make this information accessible to pre-breeders and breeders who may lack the required bioinformatics skill-set.
 Existing tools such as cMap~\citep{fang2003cmap} or genome browsers~\citep{Stein2013GBrowse,Buels2016JBrowse} allow visualisation of genetic maps and genome assemblies respectively, but are separate tools so one cannot view a genetic map alongside a physical genome sequence. 
-They are also built on web technologies such as LAMP stack which are monolithic and cumbersome to run compared to modern technology stacks.  %TODO should probably tone that down
+%They are also built on web technologies such as LAMP stack which are monolithic and cumbersome to run compared to modern technology stacks.  %TODO commented out as I don''t think this applies to JBrowse (anymore?)
 Wheat-focused databases such as GrainGenes and T3~\citep{Blake2016T3} provide a wealth of legacy data but can be difficult to interface with. 
-Pretzel aims to provide a framework which combines curated data stored in a back-end with a front-end graphical user interface for visualisation and analysis via a modern web browser.
+Pretzel aims to provide a framework which combines curated data stored in a back-end with a front-end graphical user interface for visualisation and analysis via a modern web browser. 
 
 \begin{methods}
 \section{Methods}
@@ -65,7 +67,7 @@ This general concept also allows the association of syntenic genes between genom
 Data can be uploaded through the web interface in CSV or JSON format (the native data structure in JavaScript); or uploaded via command line in JSON format to the back-end directly. 
 This facilitates upload of many datasets. 
 Upon upload, data is visible by that user only, unless they explicitly make it available to other users. 
-In addition, we have created a pipeline, Pretzel Input Generator (\href{https://github.com/plantinformatics/pretzel-input-generator}{https://github.com/plantinformatics/pretzel-input-generator}), to generate Pretzel-ready data from standard genome assembly formats in an automated way, and made available a set of publicly available genomes so users can quickly set up a Pretzel server populated with real data.
+In addition, we have created a pipeline, Pretzel Input Generator {{https://github.com/plantinformatics/pretzel-input-generator}}), to generate Pretzel-ready data from standard genome assembly formats in an automated way, and made available a set of publicly available genomes so users can quickly set up a Pretzel server populated with real data.
 One of the most common questions asked in wheat research is what genes underlie a QTL interval defined by a genetic mapping experiment. 
 With Pretzel, users with no bioinformatics training can quickly project their genetic map interval onto physical sequence and extract the genes in this region for downstream analysis. 
 An additional challenge when fine mapping an interval is potential assembly problems in the region of interest. Figure~\ref{fig:01} shows a genetic map aligned to a physical chromosome, as well as two syntenic chromosomes (chromosomes 1B and 1D) aligned via their syntenic genes (shown in red). 
@@ -118,7 +120,7 @@ Its development is ongoing and we believe the amount of data that will be public
 
 \section*{Funding}
 
-This work has been supported by GRDC project DAV00127.\vspace*{-12pt}
+This work has been supported by the Grains Research and Development Corporation project DAV00127.\vspace*{-12pt}
 
 \bibliographystyle{natbib}
 
