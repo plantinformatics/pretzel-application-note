@@ -2,7 +2,7 @@
 \copyrightyear{2018} \pubyear{2018}
 
 \access{Advance Access Publication Date: Day Month Year}
-\appnotes{Manuscript Category}
+\appnotes{Application Note}
 
 \begin{document}
 \firstpage{1}
@@ -21,15 +21,16 @@ Country.}
 
 \editor{Associate Editor: XXXXXXX}
 
-\abstract{\textbf{Motivation:} Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text
-Text Text Text Text Text.\\
-\textbf{Results:} Text  Text Text Text Text Text Text Text Text Text  Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text  Text Text Text Text Text Text\\
-\textbf{Availability:} Text  Text Text Text Text Text Text Text Text Text  Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text  Text\\
+\abstract{\textbf{Motivation:}
+Major advances have been made in the assembly of the wheat genome but remaining challenges include linking these new resources to legacy research, as well as lowering the bar to entry for biologists who may not have sufficient bioinformatics skills.
+\\
+\textbf{Results:} 
+Pretzel aims to solve both of these problems by providing an interactive, online environment for data visualisation and analysis which, when loaded with appropriately curated data, can enable researchers with no bioinformatics training to exploit the latest  genomic resources. 
+We demonstrate that Pretzel can be used to answer common questions asked by pre-breeders as well as for advanced curation of pseudomolecule structure.
+\\
+\textbf{Availability:} 
+Pretzel is implemented in JavaScript and is freely available under a GPL3 license online at: https://github.com/plantinformatics/pretzel.
+\\
 \textbf{Contact:} \href{name@bio.com}{name@bio.com}\\
 \textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}
 online.}
@@ -38,351 +39,41 @@ online.}
 
 \section{Introduction}
 
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text. Figure~\ref{fig:01}
-shows that the above method  Text Text Text Text  Text Text Text
-Text Text Text  Text Text.  \citep{Bag01} wants to know about
-{\ldots}{\ldots} text follows.
-\begin{equation}
-\sum \text{\it x}+ \text{\it y} =\text{\it Z}\label{eq:01}\vspace*{-10pt}
-\end{equation}
-
-%\enlargethispage{12pt}
-
-\section{Approach}
-
-Equation~(\ref{eq:01}) Text Text Text Text Text Text  Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-.....
-
+The release of the International Wheat Genome Sequencing Consortium (IWGSC) RefSeq v1.0 genome assembly of bread wheat cultivar Chinese Spring provided the first detailed map of the 16Gb genome, bringing wheat genomic resources closer to the standard enjoyed in rice and maize. 
+Already, international efforts are in the process of assembling more than ten elite wheat varieties to a similar standard; within five years we can expect hundreds of high quality wheat genomes to be available. 
+The challenge that remains is to connect these resources to the wealth of research carried out in the past few decades, as well as make this information accessible to pre-breeders and breeders who often do not have bioinformatics training. 
+Existing tools such as cMap (ref) and gBrowse/jBrowse (ref) allow visualisation of genetic maps and genome assemblies respectively, but are separate tools (so one cannot view a genetic map alongside a physical genome sequence) as well as being built on web technologies (LAMP stack) which are monolithic and cumbersome to run compared to modern technology stacks. 
+Wheat-focused databases such as Graingenes and T3 provide a wealth of legacy data but can be difficult to interface with. 
+Pretzel aims to provide a framework which combines curated data stored in a back-end with a front-end graphical user interface for visualisation and analysis via a modern web browser.
 
 \begin{methods}
 \section{Methods}
 
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text
-text\vspace*{1pt}
+Pretzel is built on a number of JavaScript frameworks: the front-end combines Ember.js with D3.js for real-time visualisation; the back-end is in Loopback.js connecting to a MongoDB database. 
+The user interacts with Pretzel via a web page served by the front-end. 
+The data model has been designed to be as general as possible while still enabling the richness of data to be captured. 
+The highest level data structure is a dataset, which contains one or more blocks. 
+For example, a dataset may describe a genetic map, where the blocks are individual linkage groups. 
+Within each block are a set of features which are defined as intervals (possibly of zero length, which would define a single position) within the block. 
+For example, a feature could be a molecular marker in a linkage group, or the position of a gene in a physical chromosome. 
+Using only these concepts, a wide range of information can be captured: a quantitative trait locus (QTL) is simply an interval within a linkage group; pseudomolecule structure can be described by a set of intervals denoting scaffold start/end positions. 
+Since there are often a number of alternative names for molecular markers, we created the concept of alias, which indicate that features with different names should be considered as the same when drawing alignments. 
+This general concept also allows the association of syntenic genes between genomes.
 
-\begin{itemize}
-\item for bulleted list, use itemize
-\item for bulleted list, use itemize
-\item for bulleted list, use itemize\vspace*{1pt}
-\end{itemize}
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method Text
-Text Text Text Text Text Text Text Text Text Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text\vadjust{\newpage}.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method Text
-Text Text Text Text Text Text Text Text Text Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
+Data can be uploaded through the web interface in CSV or JSON format (the native data structure in JavaScript); or uploaded via command line in JSON format to the back-end directly. 
+This facilitates upload of many datasets. 
+Upon upload, data is visible by that user only, unless they explicitly make it available to other users. 
+In addition, we have created a pipeline, Pretzel Input Generator (https://github.com/plantinformatics/pretzel-input-generator), to generate Pretzel-ready data from standard genome assembly formats in an automated way, and made available a set of publicly available genomes so users can quickly set up a Pretzel server populated with real data.
+One of the most common questions asked in wheat research is what genes underlie a QTL interval defined by a genetic mapping experiment. 
+With Pretzel, users with no bioinformatics training can quickly project their genetic map interval onto physical sequence and extract the genes in this region for downstream analysis. 
+An additional challenge when fine mapping an interval is potential assembly problems in the region of interest. Fig 1. shows a genetic map aligned to a physical chromosome, as well as two syntenic chromosomes (chromosomes 1B and 1D) aligned via their syntenic genes (shown in red). 
+By comparing the co-linearity of genes between sub-genomes, potential assembly problems can be flagged by noting when abrupt changes in co-linearity occur at scaffold break points. 
+In this way, advanced curation of pseudomolecule structure can be achieved on any number of genomes.
+The technology stack Pretzel is built on is lightweight and a user with the necessary dependencies can clone, build and run the Pretzel code within minutes with a few simple commands. 
+If run on an internet-facing machine, the server can then be connected to by other users. 
+To make the installation process even easier, we have set up Docker containers on Dockerhub (https://hub.docker.com/r/plantinformaticscollaboration/pretzel/).
 
 
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-
-\subsection{This is subheading}
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text
-text. Text Text Text Text Text Text  Text Text Text Text Text Text
-Text Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-
-
-\subsubsection{This is subsubheading}
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text\break
-text text
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text
-textText Text Text Text Text Text  Text Text Text Text Text Text
-Text Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-
-\enlargethispage{6pt}
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-\begin{table}[!t]
-\processtable{This is table caption\label{Tab:01}} {\begin{tabular}{@{}llll@{}}\toprule head1 &
-head2 & head3 & head4\\\midrule
-row1 & row1 & row1 & row1\\
-row2 & row2 & row2 & row2\\
-row3 & row3 & row3 & row3\\
-row4 & row4 & row4 & row4\\\botrule
-\end{tabular}}{This is a footnote}
-\end{table}
 
 \end{methods}
 
@@ -391,82 +82,14 @@ row4 & row4 & row4 & row4\\\botrule
 235pt{\hfill\fontsize{24pt}{24pt}\selectfont FPO\hfill}\vfill}
 \end{minipage}}
 %\centerline{\includegraphics{fig01.eps}}
-\caption{Caption, caption.}\label{fig:01}
+\caption{
+  Pretzel alignment showing a 90k genetic map on the far left against the IWGSC RefSeq v1.0 chromosome 1B pseudomolecule in the centre, 
+  with chromosome 1D on the far right. 
+  Green lines indicate direct links between features, red lines indicate links via alias. 
+  The two pseudomolecules have the scaffold structure displayed in blue, loaded inside their axes.
+}
+\label{fig:01}
 \end{figure}
-
-%\begin{figure}[!tpb]%figure2
-%%\centerline{\includegraphics{fig02.eps}}
-%\caption{Caption, caption.}\label{fig:02}
-%\end{figure}
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-
-\subsection{Test1}
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-
-
-
-
-\section{Discussion}
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text.
-
-
-
-
-Table~\ref{Tab:01} shows that Text Text Text Text Text  Text Text
-Text Text Text Text. Figure~2\vphantom{\ref{fig:02}} shows that
-the above method Text Text. Text Text Text  Text Text Text Text
-Text Text. Figure~2\vphantom{\ref{fig:02}} shows that the above
-method Text Text. Text Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method Text
-Text.
-
-
-
-
-
 
 
 
@@ -485,107 +108,19 @@ Text.
 
 \section{Conclusion}
 
-(Table~\ref{Tab:01}) Text Text Text Text Text Text  Text Text Text
-Text Text Text Text Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text  Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about  text text text text
-
-\begin{enumerate}
-\item this is item, use enumerate
-\item this is item, use enumerate
-\item this is item, use enumerate
-\end{enumerate}
-
-Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows\vadjust{\pagebreak} that the
-above method  Text Text Text Text Text Text Text Text Text Text
-Text Text.  \citealp{Boffelli03} might want to know about text
-text text text Text Text Text Text Text Text  Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text Text Text Text Text Text Text  Text Text.
-\citealp{Boffelli03} might want to know about text text text text
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text\break Text.
-
-
-Text Text Text Text Text Text  Text Text Text Text Text Text Text
-Text Text  Text Text Text Text Text Text.
-Figure~2\vphantom{\ref{fig:02}} shows that the above method  Text
-Text Text Text\vspace*{-10pt}
-
+We have described a web-based visualisation and analysis tool that we believe solves many challenges posed today in wheat research. 
+Its development is ongoing and we believe the amount of data that will be publicly available in the next few years will only increase its utility and relevance.
 
 \section*{Acknowledgements}
 
-Text Text Text Text Text Text  Text Text.  \citealp{Boffelli03} might want to know about  text
-text text text\vspace*{-12pt}
 
 \section*{Funding}
 
 This work has been supported by the... Text Text  Text Text.\vspace*{-12pt}
 
 \bibliographystyle{natbib}
-%\bibliographystyle{achemnat}
-%\bibliographystyle{plainnat}
-%\bibliographystyle{abbrv}
-%\bibliographystyle{bioinformatics}
-%
-%\bibliographystyle{plain}
-%
-%\bibliography{Document}
+
+\bibliography{references}
 
 
-\begin{thebibliography}{}
-
-\bibitem[Bofelli {\it et~al}., 2000]{Boffelli03}
-Bofelli,F., Name2, Name3 (2003) Article title, {\it Journal Name}, {\bf 199}, 133-154.
-
-\bibitem[Bag {\it et~al}., 2001]{Bag01}
-Bag,M., Name2, Name3 (2001) Article title, {\it Journal Name}, {\bf 99}, 33-54.
-
-\bibitem[Yoo \textit{et~al}., 2003]{Yoo03}
-Yoo,M.S. \textit{et~al}. (2003) Oxidative stress regulated genes
-in nigral dopaminergic neurnol cell: correlation with the known
-pathology in Parkinson's disease. \textit{Brain Res. Mol. Brain
-Res.}, \textbf{110}(Suppl. 1), 76--84.
-
-\bibitem[Lehmann, 1986]{Leh86}
-Lehmann,E.L. (1986) Chapter title. \textit{Book Title}. Vol.~1, 2nd edn. Springer-Verlag, New York.
-
-\bibitem[Crenshaw and Jones, 2003]{Cre03}
-Crenshaw, B.,III, and Jones, W.B.,Jr (2003) The future of clinical
-cancer management: one tumor, one chip. \textit{Bioinformatics},
-doi:10.1093/bioinformatics/btn000.
-
-\bibitem[Auhtor \textit{et~al}. (2000)]{Aut00}
-Auhtor,A.B. \textit{et~al}. (2000) Chapter title. In Smith, A.C.
-(ed.), \textit{Book Title}, 2nd edn. Publisher, Location, Vol. 1, pp.
-???--???.
-
-\bibitem[Bardet, 1920]{Bar20}
-Bardet, G. (1920) Sur un syndrome d'obesite infantile avec
-polydactylie et retinite pigmentaire (contribution a l'etude des
-formes cliniques de l'obesite hypophysaire). PhD Thesis, name of
-institution, Paris, France.
-
-\end{thebibliography}
 \end{document}
