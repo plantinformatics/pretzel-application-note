@@ -23,11 +23,11 @@ Country.}
 \editor{Associate Editor: XXXXXXX}
 
 \abstract{\textbf{Motivation:}
-Major advances have been made in the assembly of complex genomes such as that of wheat but remaining challenges include linking these new resources to legacy research, as well as lowering the bar to entry for members of research community who may lack specific bioinformatics skills. %TODO Not clear enough what kind of dat we are talking about?
+While major advances have been made in the assembly of complex genomes such as wheat, challenges remain to link these new resources to legacy research, as well as lowering the bar to entry for members of research community who may lack specific bioinformatics skills. %TODO Not clear enough what kind of dat we are talking about?
 \\
 \textbf{Results:} 
-Pretzel aims to solve both of these problems by providing an interactive, online environment for data visualisation and analysis which, when loaded with appropriately curated data, can enable researchers with no bioinformatics training to exploit the latest genomic resources. 
-We demonstrate that Pretzel can be used to answer common questions asked by pre-breeders as well as for advanced curation of pseudomolecule structure.
+Pretzel aims to solve both problems by providing an interactive, online environment for data visualisation and analysis which, when loaded with appropriately curated data, can enable researchers with no bioinformatics training to exploit the latest genomic resources. 
+We demonstrate that Pretzel can be used to answer common questions asked by researchers as well as for advanced curation of pseudomolecule structure.
 \\
 \textbf{Availability:} 
 Pretzel is implemented in JavaScript and is freely available under a GPLv3 license online at: {{https://github.com/plantinformatics/pretzel}}.
@@ -41,52 +41,33 @@ online.}
 
 \section{Introduction}
 
-The release of the RefSeq v1.0 genome assembly of bread wheat cultivar Chinese Spring~\citep{IWGSC2018} provided the first detailed map of the 16Gb genome, bringing wheat genomic resources closer to the standard enjoyed in rice and maize. 
-Already, international efforts are in the process of assembling more than ten elite wheat varieties to a similar standard. 
+The release of the RefSeq v1.0 genome assembly of bread wheat cultivar Chinese
+Spring~\citep{IWGSC2018} provided the first detailed map of the 16Gb genome, bringing wheat genomic
+resources closer to the standard enjoyed in rice and maize. 
+%
+Already, international efforts are in the process of assembling more than ten elite wheat varieties
+to a similar standard. 
+%
 Within five years we can expect hundreds of high quality wheat genomes to be available. 
-The challenge that remains is to connect these new resources to the wealth of research carried out in the past few decades, and make this information accessible to pre-breeders and breeders who may lack the required bioinformatics skill-set.
-Existing tools such as cMap~\citep{fang2003cmap} or genome browsers~\citep{Stein2013GBrowse,Buels2016JBrowse} allow visualisation of genetic maps and genome assemblies respectively, but are separate tools so one cannot view a genetic map alongside a physical genome sequence. 
-%They are also built on web technologies such as LAMP stack which are monolithic and cumbersome to run compared to modern technology stacks.  %TODO commented out as I don''t think this applies to JBrowse (anymore?)
-Wheat-focused databases such as GrainGenes and T3~\citep{Blake2016T3} provide a wealth of legacy data but can be difficult to interface with. 
-Pretzel aims to provide a framework which combines curated data stored in a back-end with a front-end graphical user interface for visualisation and analysis via a modern web browser. 
-
-\begin{methods}
-\section{Methods}
-
-Pretzel is built on a number of JavaScript frameworks: the front-end combines Ember.js with D3.js for real-time visualisation; the back-end is in Loopback.js connecting to a MongoDB database. 
-The user interacts with Pretzel via a web page served by the front-end. 
-The data model has been designed to be as general as possible while still enabling the richness of data to be captured. 
-The highest level data structure is a dataset, which contains one or more blocks. 
-For example, a dataset may describe a genetic map, where the blocks are individual linkage groups. 
-Within each block are a set of features which are defined as intervals (possibly of zero length, which would define a single position) within the block. 
-For example, a feature could be a molecular marker in a linkage group, or the position of a gene in a physical chromosome. 
-Using only these concepts, a wide range of information can be captured: a quantitative trait locus (QTL) is simply an interval within a linkage group; pseudomolecule structure can be described by a set of intervals denoting scaffold start/end positions. 
-Since there are often a number of alternative names for molecular markers, we created the concept of alias, which indicate that features with different names should be considered as the same when drawing alignments. 
-This general concept also allows the association of syntenic genes between genomes.
-
-Data can be uploaded through the web interface in CSV or JSON format (the native data structure in JavaScript); or uploaded via command line in JSON format to the back-end directly. 
-This facilitates upload of many datasets. 
-Upon upload, data is visible by that user only, unless they explicitly make it available to other users. 
-In addition, we have created a pipeline, Pretzel Input Generator {{https://github.com/plantinformatics/pretzel-input-generator}}), to generate Pretzel-ready data from standard genome assembly formats in an automated way, and made available a set of publicly available genomes so users can quickly set up a Pretzel server populated with real data.
-One of the most common questions asked in wheat research is what genes underlie a QTL interval defined by a genetic mapping experiment. 
-With Pretzel, users with no bioinformatics training can quickly project their genetic map interval onto physical sequence and extract the genes in this region for downstream analysis. 
-An additional challenge when fine mapping an interval is potential assembly problems in the region of interest. Figure~\ref{fig:01} shows a genetic map aligned to a physical chromosome, as well as two syntenic chromosomes (chromosomes 1B and 1D) aligned via their syntenic genes (shown in red). 
-By comparing the co-linearity of genes between sub-genomes, potential assembly problems can be flagged by noting when abrupt changes in co-linearity occur at scaffold break points. 
-In this way, advanced curation of pseudomolecule structure can be achieved on any number of genomes.
-The technology stack Pretzel is built on is lightweight and a user with the necessary dependencies can clone, build and run the Pretzel code within minutes with a few simple commands. 
-If run on an internet-facing machine, the server can then be connected to by other users. 
-To make the installation process even easier, we provide Docker container images on Docker Hub (\href{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}).
-
-
-
-\end{methods}
-
-\begin{figure}[!tpb]%figure1
-%\fboxsep=0pt\colorbox{gray}{\begin{minipage}[t]{235pt} \vbox to 100pt{\vfill\hbox to
-%235pt{\hfill\fontsize{24pt}{24pt}\selectfont FPO\hfill}\vfill}
-%\end{minipage}}
+%
+The challenge that remains is to connect these new resources to the wealth of research carried out
+in the past few decades, and make this information accessible to researchers and breeders who may
+lack the required bioinformatics skill-set.
+%
+Existing tools such as cMap~\citep{fang2003cmap} or genome
+browsers~\citep{Stein2013GBrowse,Buels2016JBrowse} allow the visualisation of genetic maps and genome
+assemblies, respectively, but are separate tools. Hence one cannot view a genetic map alongside a
+physical genome sequence, for example. 
+%
+Wheat-focused databases such as GrainGenes and T3~\citep{Blake2016T3} provide a wealth of legacy
+data but can be difficult to interface with. 
+%
+Pretzel aims to provide a framework that combines curated data stored in a back-end with a
+front-end graphical user interface for visualisation and analysis via a modern web browser. 
+%
+\begin{figure*}
 \centering
-\includegraphics[width=.5\textwidth]{pretzel.png}
+  \includegraphics[width=\textwidth]{pretzel.png}
 \caption{
   Pretzel alignment showing a 90k genetic map on the far left against the IWGSC RefSeq v1.0 chromosome 1B pseudomolecule in the centre, 
   with chromosome 1D on the far right. 
@@ -94,29 +75,86 @@ To make the installation process even easier, we provide Docker container images
   The two pseudomolecules have the scaffold structure displayed in blue, loaded inside their axes.
 }
 \label{fig:01}
-\end{figure}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{figure*}
 %
-%     please remove the " % " symbol from \centerline{\includegraphics{fig01.eps}}
-%     as it may ignore the figures.
+\begin{methods}
+\section{Methods}
+
+Pretzel is built on several JavaScript frameworks: the front-end combines Ember.js with D3.js
+  for real-time visualisation; the back-end is in Loopback.js connecting to a MongoDB database. 
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The user interacts with Pretzel via a web page served by the front-end. 
+%
+The data model has been designed to be as general as possible while still enabling the richness of
+  data to be captured. 
+%
+  The highest level data structure is a \textit{dataset}, which contains one or more \textit{blocks}.
+%
+For example, a dataset may describe a genetic map, where the blocks are individual linkage groups. 
+%
+  Within each block are a set of \textit{features} which are defined as intervals (possibly of zero length,
+  which would define a single position) within the block. 
+%
+For example, a feature could be a molecular marker in a linkage group, or the position of a gene in
+  a physical chromosome. 
+%
+Using only these concepts, a wide range of information can be captured: a quantitative trait locus
+  (QTL) is simply an interval within a linkage group; pseudomolecule structure can be described by a
+  set of intervals denoting scaffold start/end positions. 
+%
+As there are often multiple alternative names for molecular markers, we created the concept of
+  \textit{alias}, which indicates that features with different names should be considered as the same when
+  drawing alignments. 
+%
+This general concept also allows the association of syntenic genes between genomes.
 
+Data can be uploaded through the web interface in CSV or JSON format (the native data structure in
+  JavaScript); or uploaded via command line in JSON format to the back-end directly. 
+%
+This facilitates upload of many datasets. 
+%
+Upon upload, data is visible by that user only, unless they explicitly make it available to other
+  users. 
+%
+In addition, we have created a pipeline, Pretzel Input Generator
+  {{https://github.com/plantinformatics/pretzel-input-generator}}), to generate Pretzel-ready data
+  from standard genome assembly formats in an automated way. This pipeline has been used to make
+  available a set of publicly available genomes so users can quickly set up a Pretzel server
+  populated with real data.
 
+One of the most common questions asked in wheat research is what genes underlie a QTL interval
+  defined by a genetic mapping experiment. 
+%
+With Pretzel, users with no bioinformatics training can quickly project their genetic map interval
+  onto physical sequence and extract the genes in this region for downstream analysis. 
+%
+An additional challenge when fine mapping an interval is potential mis-assembly in the region
+  of interest. Figure~\ref{fig:01} shows a genetic map aligned to a physical chromosome, as well as
+  two syntenic chromosomes (chromosomes 1B and 1D) aligned via their syntenic genes (shown in red). 
+%
+By comparing the co-linearity of genes between sub-genomes, potential assembly problems can be
+  flagged by noting when abrupt changes in co-linearity occur at scaffold break points. 
+%
+In this way, advanced curation of pseudomolecule structure can be achieved on any number of genomes.
 
-
-
+The technology stack Pretzel is built on is lightweight and a user with the necessary dependencies
+can clone, build and run the Pretzel code within minutes with a few simple commands. 
+%
+If run on an internet-facing machine, external users can then connect to the server.
+%
+To make the installation process even easier, we provide Docker container images on Docker Hub
+(\href{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}).
+\end{methods}
 
 \section{Conclusion}
 
-We have described a web-based visualisation and analysis tool that we believe solves many challenges posed today in wheat research. 
-Its development is ongoing and we believe the amount of data that will be publicly available in the next few years will only increase its utility and relevance.
+We have developed a web-based visualisation and analysis tool that solves many challenges posed today in wheat research. 
+%
+Its development is ongoing and we believe the volume of data that will be publicly available in the next few years will only increase its utility and relevance.
 
 \section*{Acknowledgements}
 
-
+Blah di blah.
 
 \section*{Funding}
 
