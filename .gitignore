@@ -1,5 +1,7 @@
-pretzel.pdf
-pretzel.synctex.gz
-pretzel.log
-pretzel.aux
-pretzel.out
+pretzel*pdf
+pretzel*synctex.gz
+pretzel*log
+pretzel*aux
+pretzel*out
+pretzel*bbl
+pretzel*blg
