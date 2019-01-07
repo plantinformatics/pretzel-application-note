@@ -23,7 +23,7 @@ Wheat-focused databases such as GrainGenes and T3~\citep{Blake2016T3} provide a 
 data but can be difficult to interface with. 
 %
 Pretzel aims to provide a framework that combines curated data stored in a back-end with a
-front-end graphical user interface for visualisation and analysis via a modern web browser. 
+modern front-end graphical user interface for visualisation and analysis via a web browser. 
 %
 \begin{figure*}
 \centering
@@ -31,8 +31,9 @@ front-end graphical user interface for visualisation and analysis via a modern w
 \caption{
   Pretzel alignment showing a 90k genetic map on the far left against the IWGSC RefSeq v1.0 chromosome 1B pseudomolecule in the centre, 
   with chromosome 1D on the far right. 
-  Green lines indicate direct links between features, red lines indicate links via alias. 
-  The two pseudomolecules have the scaffold structure displayed in blue, loaded inside their axes.
+  Green lines between features indicate direct, e.g. marker-based links. 
+  Red lines indicate links via alias which can be definded e.g. based on sequence similarity. 
+  The two pseudomolecules have their scaffold arrangement displayed in blue, alongside their axes.
 }
 \label{fig:01}
 \end{figure*}
@@ -76,8 +77,9 @@ This facilitates upload of many datasets.
 Upon upload, data is visible by that user only, unless they explicitly make it available to other
   users. 
 %
-In addition, we have created a pipeline, Pretzel Input Generator
-  {{https://github.com/plantinformatics/pretzel-input-generator}}), to generate Pretzel-ready data
+In addition, we have created a pipeline, 
+  \href{https://github.com/plantinformatics/pretzel-input-generator}{https://github.com/plantinformatics/pretzel-input-generator}), 
+  to generate Pretzel-ready data
   from standard genome assembly formats in an automated way. This pipeline has been used to make
   available a set of publicly available genomes so users can quickly set up a Pretzel server
   populated with real data.
