@@ -33,7 +33,7 @@ modern front-end graphical user interface for visualisation and analysis via a w
   Pretzel alignment showing a 90k genetic map on the left against the IWGSC RefSeq v1.0 chromosome 1B pseudomolecule in the centre, 
   with chromosome 1D on the right. 
   Green lines between features indicate direct, e.g. marker-based links. 
-  Red lines indicate links via alias which can be definded e.g. based on sequence similarity. 
+  Red lines indicate links via alias which can be defined e.g. based on sequence similarity. 
   The two pseudomolecules have their scaffold arrangement displayed in blue, alongside their axes.
 }
 \label{fig:01}
@@ -43,7 +43,7 @@ modern front-end graphical user interface for visualisation and analysis via a w
 \section{Methods}
 
 Pretzel is built on several JavaScript frameworks: the front-end combines Ember.js with D3.js
-  for real-time visualisation; the back-end is in Loopback.js connecting to a MongoDB database. 
+  for real-time visualisation; the back-end uses Loopback.js connecting to a MongoDB database. 
 %
 The user interacts with Pretzel via a web page served by the front-end. 
 %
@@ -70,12 +70,12 @@ As there are often multiple alternative names for molecular markers we created a
 At present this general concept allows the association of syntenic genes between genomes and the direct comparison of genetic maps
   based on different marker systems/types through alias by reference position.
 
-Data uploaded is simple and can be achieved through the web interface in CSV or JSON format (the native data structure in
-  JavaScript); or uploaded via command line in JSON format directly to the back-end. 
+Data upload is simple and can be achieved through the web interface in CSV or JSON format (the native data structure in
+  JavaScript); or via command line in JSON format directly to the back-end. 
 %
 Data sets can be uploaded in whole or in part, or as they are generated, providing flexibility and allowing users to add data in real time.
 %
-Upon upload, data is visible by that user only, unless they explicitly make it available to other users. 
+Upon upload, data is visible to that user only, unless they explicitly make it available to other users. 
 %
 In addition, we have created a pipeline, 
   \href{https://github.com/plantinformatics/pretzel-input-generator}{https://github.com/plantinformatics/pretzel-input-generator}), 
@@ -86,7 +86,7 @@ In addition, we have created a pipeline,
 
 A common goal in wheat genetic studies is to fine map a QTL to discover the underlying gene. This generally requires the translation of the
   QTL region from genetic map space to physical genome space. Once this is achieved one of the most common questions asked in wheat research 
-  is what genes underlie a QTL interval defined in a genetic mapping experiment. 
+  is to ask what genes underlie a QTL interval defined in a genetic mapping experiment. 
 %
 With Pretzel, users with no bioinformatics training can quickly project their genetic map interval
   onto physical sequence and extract the genes in the target region for downstream analysis. 
@@ -111,7 +111,7 @@ To make the installation process even easier, we provide Docker container images
 
 \section{Conclusion}
 
-We have developed a web-based visualisation and analysis tool that solves many challenges posed today in wheat research. 
+We have developed a web-based visualisation and analysis tool that solves many challenges present today in wheat research. 
 %
 Its development is ongoing and we believe the volume of data that will be publicly available in the next few years will only increase its utility and relevance.
 
