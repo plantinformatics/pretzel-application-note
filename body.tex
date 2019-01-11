@@ -34,7 +34,7 @@ modern front-end graphical user interface for visualisation and analysis via a w
   with chromosome 1D on the right. 
   Green lines between features indicate direct, e.g. marker-based links. 
   Red lines indicate links via alias which can be defined e.g. based on sequence similarity. 
-  The two pseudomolecules have their scaffold arrangement displayed in blue, alongside their axes.
+  The two pseudomolecules have their scaffold arrangement (AGP structure) displayed in blue, alongside their axes.
 }
 \label{fig:01}
 \end{figure*}
@@ -65,7 +65,7 @@ Using only these three concepts, a large number of concepts can be represented: 
   set of intervals denoting scaffold start/end positions \textit{features} within a chromosome \textit{block}. 
 %
 As there are often multiple alternative names for molecular markers we created a fourth concept \textit{alias}. 
-\textit{Alias} enables features with different names to be considered as the same and therefore linked when drawing alignments. 
+\textit{Aliases} enables features with different names to be considered as the same and therefore linked when drawing alignments. 
 %
 At present this general concept allows the association of syntenic genes between genomes and the direct comparison of genetic maps
   based on different marker systems/types through alias by reference position.
@@ -107,6 +107,8 @@ If run on an internet-facing machine, external users can then connect to the ser
 %
 To make the installation process even easier, we provide Docker container images on Docker Hub
 (\href{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}{\nolinkurl{https://hub.docker.com/r/plantinformaticscollaboration/pretzel/}}).
+An instance of Pretzel populated with Australia-specific data is available to Grains Research and
+Development Corporation-funded researchers at \href{http://plantinformatics.io/}{\nolinkurl{http://plantinformatics.io/}}.
 %\end{methods}
 
 \section{Conclusion}
