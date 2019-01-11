@@ -34,7 +34,8 @@ modern front-end graphical user interface for visualisation and analysis via a w
   Pretzel alignment showing a 90k genetic map on the left against the IWGSC RefSeq v1.0 chromosome 1B pseudomolecule in the centre, 
   with chromosome 1D on the right. 
   Green lines between features indicate direct, e.g. marker-based links. 
-  Red lines indicate links via alias which can be defined e.g. based on sequence similarity. 
+  Red lines indicate links via alias which can be defined e.g. based on sequence similarity between
+  genes.
   The two pseudomolecules have their scaffold arrangement (AGP structure) displayed in blue, alongside their axes.
 }
 \label{fig:01}
@@ -78,12 +79,8 @@ Data sets can be uploaded in whole or in part, or as they are generated, providi
 %
 Upon upload, data is visible to that user only, unless they explicitly make it available to other users. 
 %
-In addition, we have created a pipeline, 
-  \href{https://github.com/plantinformatics/pretzel-input-generator}{https://github.com/plantinformatics/pretzel-input-generator}), 
-  to generate Pretzel-ready data
-  from standard genome assembly formats in an automated way. This pipeline has been used to make
-  available a set of publicly available genomes so users can quickly set up a Pretzel server
-  populated with real data.
+In addition, we have created a pipeline, \href{https://github.com/plantinformatics/pretzel-input-generator}{\nolinkurl{https://github.com/plantinformatics/pretzel-input-generator}}), 
+  to generate Pretzel-ready data from standard genome assembly formats in an automated way. This pipeline has been used to make available a set of publicly available genomes so users can quickly set up a Pretzel server populated with real data.
 
 A common goal in wheat genetic studies is to fine map a QTL to discover the underlying gene. This generally requires the translation of the
   QTL region from genetic map space to physical genome space. Once this is achieved one of the most common questions asked in wheat research 
