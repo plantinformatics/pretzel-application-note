@@ -2,7 +2,7 @@
 \section{Introduction}
 
 The release of the RefSeq v1.0 genome assembly of bread wheat cultivar Chinese
-Spring~\citep{IWGSC2018} provided the first detailed map of the 16Gb genome, bringing wheat genomic
+Spring~\citep{IWGSC2018} provided the first detailed map of the 16Gb genome bringing wheat genomic
 resources closer to the standard enjoyed in rice and maize. 
 %
 Already, international efforts are in the process of assembling more than ten elite wheat varieties
@@ -59,23 +59,22 @@ For example, a dataset may describe a genetic map, where the blocks are individu
 For example, a feature could be a molecular marker in a linkage group, or the position of a gene in
   a physical chromosome. 
 %
-Using only these concepts, a wide range of information can be captured: a quantitative trait locus
-  (QTL) is simply an interval within a linkage group; pseudomolecule structure can be described by a
-  set of intervals denoting scaffold start/end positions. 
+Using only these three concepts, a large number of concepts can be represented: a quantitative trait locus
+  (QTL) is simply an interval \textit{feature} within a linkage group \textit{block}; whereas pseudomolecule structure can be described by a
+  set of intervals denoting scaffold start/end positions \textit{features} within a chromosome \textit{block}. 
 %
-As there are often multiple alternative names for molecular markers, we created the concept of
-  \textit{alias}, which indicates that features with different names should be considered as the same when
-  drawing alignments. 
+As there are often multiple alternative names for molecular markers we created a fourth concept \textit{alias}. 
+\textit{Alias} enables features with different names to be considered as the same and therefore linked when drawing alignments. 
 %
-This general concept also allows the association of syntenic genes between genomes.
+At present this general concept allows the association of syntenic genes between genomes and the direct comparison of genetic maps
+  based on different marker systems/types through alias by reference position.
 
-Data can be uploaded through the web interface in CSV or JSON format (the native data structure in
-  JavaScript); or uploaded via command line in JSON format to the back-end directly. 
+Data uploaded is simple and can be achieved through the web interface in CSV or JSON format (the native data structure in
+  JavaScript); or uploaded via command line in JSON format directly to the back-end. 
 %
-This facilitates upload of many datasets. 
+Data sets can be uploaded in whole or in part, or as they are generated, providing flexibility and allowing users to add data in real time.
 %
-Upon upload, data is visible by that user only, unless they explicitly make it available to other
-  users. 
+Upon upload, data is visible by that user only, unless they explicitly make it available to other users. 
 %
 In addition, we have created a pipeline, 
   \href{https://github.com/plantinformatics/pretzel-input-generator}{https://github.com/plantinformatics/pretzel-input-generator}), 
@@ -84,11 +83,12 @@ In addition, we have created a pipeline,
   available a set of publicly available genomes so users can quickly set up a Pretzel server
   populated with real data.
 
-One of the most common questions asked in wheat research is what genes underlie a QTL interval
-  defined by a genetic mapping experiment. 
+A common goal in wheat genetic studies is to fine map a QTL to discover the underlying gene. This generally requires the translation of the
+  QTL region from genetic map space to physical genome space. Once this is achieved one of the most common questions asked in wheat research 
+  is what genes underlie a QTL interval defined in a genetic mapping experiment. 
 %
 With Pretzel, users with no bioinformatics training can quickly project their genetic map interval
-  onto physical sequence and extract the genes in this region for downstream analysis. 
+  onto physical sequence and extract the genes in the target region for downstream analysis. 
 %
 An additional challenge when fine mapping an interval is potential mis-assembly in the region
   of interest. Figure~\ref{fig:01} shows a genetic map aligned to a physical chromosome, as well as
